@@ -22,7 +22,7 @@
             alert ("输入的的税率错误，请输入0-1之间的数");
             return;
         }
-        var x = ( 1000 - 800 * tax ) / (1 - tax);
+        var x = ( value - 800 * tax ) / (1 - tax);
         console.log(x);
 
         var resultText = document.getElementById("resultText");
