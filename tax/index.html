@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8”>
+</head>
+<body>
+
+
+<script>
+
+    var onClick = function () {
+        var value = document.getElementById("inputNumber").value;
+        var tax =  document.getElementById("taxNumber").value;
+        var least =  document.getElementById("leastNumber").value;
+        value = parseFloat(value);
+        tax = parseFloat(tax);
+        least = parseFloat(least);
+        if (isNaN(value)) {
+            alert("输入的支付金额不是数字");
+            return;
+        }
+        if (isNaN(tax) || tax >= 1 || tax < 0){
+            alert ("输入的的税率错误，请输入0-1之间的数");
+            return;
+        }
+        if (isNaN(least)) {
+            alert("输入的扣除额不是数字");
+            return;
+        }
+        var x = ( value - least * tax ) / (1 - tax);
+        console.log(x);
+
+        var resultText = document.getElementById("resultText");
+        resultText.innerText = "需要报税金额为：" + x + "元";
+    }
+
+
+</script>
+
+<input id="inputNumber" type="number" value="1000">输入最终支付金额</input><br/>
+<input id="taxNumber" type="number" value="0.2">输入税率，在 0 - 1之间</input><br/>
+<input id="leastNumber" type="number" value="800">输入扣除额</input><br/>
+<input id="button" type="button" value="计算结果" onclick="onClick()"/>
+<p id="resultText"></p>
+</body>
+</html>
